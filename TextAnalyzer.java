@@ -3,12 +3,12 @@ import java.util.HashMap;  //imports hashmap from java.util library
 public class TextAnalyzer{ 
     public static void main(String[] args){  //entry point of the program. Args array takes cmd line arguments
         if (args.length != 3){               //checks if there is exactly 3 arguments
-            System.out.println("This is java TextAnalyzer <inputFile> <charFreqFile> <wordFreqFile>"); //if not 3 arguments, exits program early
+            System.out.println("This is java TextAnalyzer and takes 3 arguments <inputFile> <charFreqFile> <wordFreqFile>"); //if not 3 arguments, exits program early
             return;
         }
         String inputFile = args[0];     //cmd line argument|text file to analyze
-        String charFreqFile = args[1];  //cmd line argument|character frequency file output
-        String wordFreqFile = args[2];  //cmd line argument|word frequency file output
+        // String charFreqFile = args[1];  //cmd line argument|character frequency file output
+        // String wordFreqFile = args[2];  //cmd line argument|word frequency file output
 
         String content = readFile(inputFile);  //reads file and returns and stores to the content variable
 
@@ -16,11 +16,11 @@ public class TextAnalyzer{
         System.out.println(countWords(content));       //counts words from the file that was read and prints to console
         System.out.println(countLines(content));       //counts lines from the file that was read and prints to console
         
-        HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
-        writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
+        // HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
+        // writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
 
-        HashMap<String, Integer> wordFreq = countWordFrequency(content);  //calls the countWordFrequency function, returns words and the frequency count from the text
-        writeWordFrequency(wordFreq, wordFreqFile);  //saves the frequency count and saves it to an output file
+        // HashMap<String, Integer> wordFreq = countWordFrequency(content);  //calls the countWordFrequency function, returns words and the frequency count from the text
+        // writeWordFrequency(wordFreq, wordFreqFile);  //saves the frequency count and saves it to an output file
 
     }
 
