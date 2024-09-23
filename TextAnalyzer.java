@@ -1,20 +1,20 @@
-import java.util.HashMap;
+import java.util.HashMap;  //imports hashmap from java.util library
 
-public class TextAnalyzer{
-    public static void main(String[] args){
-        if (args.length != 3) {
-            System.out.println("This is java TextAnalyzer <inputFile> <charFreqFile> <wordFreqFile>");
+public class TextAnalyzer{ //
+    public static void main(String[] args){  //entry point of the program. Args array takes cmd line arguments
+        if (args.length != 3) {  //checks if there is exactly 3 arguments
+            System.out.println("This is java TextAnalyzer <inputFile> <charFreqFile> <wordFreqFile>"); //if not 3 arguments, exits program early
             return;
         }
-        String inputFile = args[0];
-        String charFreqFile = args[1];
-        String wordFreqFile = args[2];
+        String inputFile = args[0];     //cmd line argument|text file to analyze
+        String charFreqFile = args[1];  //cmd line argument|character frequency file output
+        String wordFreqFile = args[2];  //cmd line argument|word frequency file output
 
-        String content = readFile(inputFile);
+        String content = readFile(inputFile);  //reads file and returns and stores to the content variable
 
-        System.out.println(countCharacters(content));
-        System.out.println(countWords(content));
-        System.out.println(countLines(content));
+        System.out.println(countCharacters(content));  //counts the number of characters from the file that was read and prints to console
+        System.out.println(countWords(content));  //counts words from the file that was read and prints to console
+        System.out.println(countLines(content));  //counts lines from the file that was read and prints to console
         
         HashMap<Character, Integer> charFreq = countCharacterFrequency(content);
         writeCharacterFrequency(charFreq, charFreqFile);
@@ -47,17 +47,15 @@ public class TextAnalyzer{
         String[] lines = content.split("\n");
         return lines.length;
     }
-    // public static int countCharacterFrequency(String content){
 
-    // }
-    // public static int countWordFrequency(String content){
-
-    // }
-    public static HashMap<Character, Integer> charFreq = countCharacterFrequency(String content);{
+    public static HashMap<Character, Integer> countCharacterFrequency(String content) {
+        HashMap<Character, Integer> charFreq = new HashMap<>();
+        for(char c : content.toCharArray()) {
+            charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
+        }
         return charFreq;
-
     }
-    public static int writeWordFrequency(String fileName, int frequency){
-        return 0;
-    }
+    // public static int writeWordFrequency(String fileName, int frequency){
+    //     return 0;
+    // }
 }
