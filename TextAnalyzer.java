@@ -16,15 +16,15 @@ public class TextAnalyzer{ //
         System.out.println(countWords(content));  //counts words from the file that was read and prints to console
         System.out.println(countLines(content));  //counts lines from the file that was read and prints to console
         
-        HashMap<Character, Integer> charFreq = countCharacterFrequency(content);
-        writeCharacterFrequency(charFreq, charFreqFile);
+        HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
+        writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
 
-        HashMap<String, Integer> wordFreq = countWordFrequency(content);
-        writeWordFrequency(wordFreq, wordFreqFile);
+        HashMap<String, Integer> wordFreq = countWordFrequency(content);  //calls the countWordFrequency function, returns words and the frequency count from the text
+        writeWordFrequency(wordFreq, wordFreqFile);  //saves the frequency count and saves it to an output file
 
     }
 
-        public static String readFile(String fileName) {
+    public static String readFile(String fileName) {
         String content = "";
         try {
             content = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(fileName)));
