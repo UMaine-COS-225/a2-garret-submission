@@ -1,8 +1,8 @@
 import java.util.HashMap;  //imports hashmap from java.util library
 
-public class TextAnalyzer{ //
+public class TextAnalyzer{ 
     public static void main(String[] args){  //entry point of the program. Args array takes cmd line arguments
-        if (args.length != 3){  //checks if there is exactly 3 arguments
+        if (args.length != 3){               //checks if there is exactly 3 arguments
             System.out.println("This is java TextAnalyzer <inputFile> <charFreqFile> <wordFreqFile>"); //if not 3 arguments, exits program early
             return;
         }
@@ -13,8 +13,8 @@ public class TextAnalyzer{ //
         String content = readFile(inputFile);  //reads file and returns and stores to the content variable
 
         System.out.println(countCharacters(content));  //counts the number of characters from the file that was read and prints to console
-        System.out.println(countWords(content));  //counts words from the file that was read and prints to console
-        System.out.println(countLines(content));  //counts lines from the file that was read and prints to console
+        System.out.println(countWords(content));       //counts words from the file that was read and prints to console
+        System.out.println(countLines(content));       //counts lines from the file that was read and prints to console
         
         HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
         writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
@@ -25,8 +25,8 @@ public class TextAnalyzer{ //
     }
 
     public static String readFile(String fileName){  //readFile method, fileName parameter
-        String content = "";   //variable to hold the text read from the file
-        try{   //used because might throw exception/error.
+        String content = "";                         //variable to hold the text read from the file
+        try{                                         //used because might throw exception/error. try this cath that
             content = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(fileName)));
             /*
             this performs the actual reading of the file:
@@ -38,24 +38,24 @@ public class TextAnalyzer{ //
             java.nio.file.Paths.get(fileName) converts the fileName string into a path object, which represents the file location.
             */
             
-        } catch (java.io.IOException e){  //if exception happens, catch executes
+        } catch (java.io.IOException e){                        //if exception happens, catch executes
             System.out.println("File not found: " + fileName);  //if exception happens,prints error message
         }
-        return content;  //returns content variable if file was read successfully.
+        return content;                                         //returns content variable if file was read successfully.
     }
 
     public static int countCharacters(String content){
-        return content.length();  //returns number of characters in the string
+        return content.length();                                //returns number of characters in the string
     }
     
     public static int countWords(String content){
         String[] words = content.split("\\s+");
-        return words.length;  //returns number of words in the string|splits "\\s+" content based on whitespace
+        return words.length;                             //returns number of words in the string|splits "\\s+" content based on whitespace
     }
     
     public static int countLines(String content){
         String[] lines = content.split("\n");
-        return lines.length;  //returns how many lines in the text content| splits content base on "\n" new lines
+        return lines.length;                          //returns how many lines in the text content| splits content base on "\n" new lines
     }
 
     public static HashMap<Character, Integer> countCharacterFrequency(String content){
