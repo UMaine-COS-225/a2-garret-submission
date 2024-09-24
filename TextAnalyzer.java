@@ -1,4 +1,4 @@
-import java.util.HashMap;  //imports hashmap from java.util library
+import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -85,7 +85,7 @@ public class TextAnalyzer{
         HashMap<Character, Integer> charFreq = new HashMap<>(); 
         fileName = fileName.toLowerCase();
         for (char c : fileName.toCharArray()) { 
-            if (c != ' ' && c != '\n') {  // Skip spaces and newlines
+            if (c != '\n') {  
                 charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);  
             }
         }
@@ -93,6 +93,7 @@ public class TextAnalyzer{
         //takes one parameter named content. returns a hashmap for each key(letter/character) and value(integer|count of letter)
         //initializes the hash map named charFreq
         //loops through characters in the content, and converts the string into an array of characters allowing the loop
+        //skip spaces and newlines
         //updates the frequency count. charFreq.put updates the charFreq map.and increments by 1. if c does not exist, returns default value of 0.
         //returns charFreq hashmap that has each character found in the content
     }
@@ -113,20 +114,20 @@ public class TextAnalyzer{
         //declares array of string named words and splits the content based on whitespace
         //loop that goes over each word in the words array made earlier
         //udates entry in wordFreq map|gets current count for word, if none then returns default 0. then increases by 1
-        //returns the hashmap containing words and how many times.
+        //returns the hashmap containing words and frequency.
     }
 
     public static void writeCharacterFrequency(HashMap<Character, Integer> charFreq, String fileName) {  
         try (FileWriter writer = new FileWriter(fileName)){  
             for (HashMap.Entry<Character, Integer> entry : charFreq.entrySet()) {  
-                writer.write(entry.getKey() + ": " + entry.getValue() + "\n");  
+                writer.write(entry.getKey() + ", " + entry.getValue() + "\n");  
             }
         } catch (IOException e) {  
             System.out.println("Error writing characters to file " + fileName);  
         }
         /*declared a writeCharacterFrequency method that doesnt return a value
          *parameter is a HashMap where key=characters objects and values=integer objects
-         *string takes name of the file to write to from the command line interface
+         *string takes name of the file to write too from the command line interface
          * followed by try and catch blocks
          */
 
@@ -135,10 +136,17 @@ public class TextAnalyzer{
     public static void writeWordFrequency(HashMap<String, Integer> wordFreq, String fileName) {  
         try (FileWriter writer = new FileWriter(fileName)) {  
             for (HashMap.Entry<String, Integer> entry : wordFreq.entrySet()) {  
-                writer.write(entry.getKey() + ": " + entry.getValue() + "\n");  
+                writer.write(entry.getKey() + ", " + entry.getValue() + "\n");  
             }
         } catch (IOException e) {  
             System.out.println("Error writing word to file: " + fileName);  
         }
+        /*declared a writeWordFrequency method that doesnt return a value
+         *parameter is a hashmap where key=string objects and values=integer objects
+         * for loop iterates through each entry in wordFreq hashmap
+         * gets the word/ gets the frequency(value)
+         * then writes to the file followed by new line
+         * else throws and error
+         */
     }
 }
