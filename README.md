@@ -4,7 +4,7 @@
 
 **Name** - Garrett Rumery
 
-**Resources** - Boardman 138, w3schools.com
+**Resources** - Boardman 138, w3schools.com, Vj, GeeksForGeeks
 
 **Introspection** -
 
