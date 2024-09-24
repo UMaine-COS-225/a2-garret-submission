@@ -1,4 +1,8 @@
 import java.util.HashMap;  //imports hashmap from java.util library
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TextAnalyzer{ 
     public static void main(String[] args){  //entry point of the program. Args array takes cmd line arguments
@@ -7,8 +11,8 @@ public class TextAnalyzer{
             return;
         }
         String inputFile = args[0];     //cmd line argument|text file to analyze
-        // String charFreqFile = args[1];  //cmd line argument|character frequency file output
-        // String wordFreqFile = args[2];  //cmd line argument|word frequency file output
+        String charFreqFile = args[1];  //cmd line argument|character frequency file output
+        String wordFreqFile = args[2];  //cmd line argument|word frequency file output
 
         String content = readFile(inputFile);  //reads file and returns and stores to the content variable
 
@@ -16,33 +20,29 @@ public class TextAnalyzer{
         System.out.println(countWords(content));       //counts words from the file that was read and prints to console
         System.out.println(countLines(content));       //counts lines from the file that was read and prints to console
         
-        // HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
-        // writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
+        HashMap<Character, Integer> charFreq = countCharacterFrequency(content);  //calls the countCharacterFrequency function, returns characters and the frequency count from the text
+        writeCharacterFrequency(charFreq, charFreqFile); //saves the frequency count and saves it to an output file
 
-        // HashMap<String, Integer> wordFreq = countWordFrequency(content);  //calls the countWordFrequency function, returns words and the frequency count from the text
-        // writeWordFrequency(wordFreq, wordFreqFile);  //saves the frequency count and saves it to an output file
+        HashMap<String, Integer> wordFreq = countWordFrequency(content);  //calls the countWordFrequency function, returns words and the frequency count from the text
+        writeWordFrequency(wordFreq, wordFreqFile);  //saves the frequency count and saves it to an output file
 
     }
+    
 
-    public static String readFile(String fileName){  //readFile method, fileName parameter
-        String content = "";                         //variable to hold the text read from the file
-        try{                                         //used because might throw exception/error. try this cath that
-            content = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(fileName)));
-            /*
-            this performs the actual reading of the file:
-            
-            new String(...): This converts the byte array into a string. result is assigned to the content variable.
-            
-            java.nio.file.Files.readAllBytes(...):reads all the bytes from the file specified by the path object and returns them as a byte array.
-            
-            java.nio.file.Paths.get(fileName) converts the fileName string into a path object, which represents the file location.
-            */
-            
-        } catch (java.io.IOException e){                        //if exception happens, catch executes
-            System.out.println("File not found: " + fileName);  //if exception happens,prints error message
+    //Copied from Week2 filestuff.java
+    public static String readFile(String fileName) {  
+        StringBuilder content = new StringBuilder();  
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {  
+            String line;
+            while ((line = br.readLine()) != null) {  
+                content.append(line).append("\n");  
+            }
+        } catch (IOException e) {  
+            System.out.println("File not found: " + fileName);  
         }
-        return content;                                         //returns content variable if file was read successfully.
+        return content.toString();  
     }
+    
 
     public static int countCharacters(String content){
         return content.length();                                //returns number of characters in the string
@@ -76,4 +76,33 @@ public class TextAnalyzer{
         }
         return wordFreq;  //returns the hashmap containing words and how many times.
     }
+
+    public static void writeCharacterFrequency(HashMap<Character, Integer> charFreq, String fileName){
+        try {
+            FileWriter writer = new FileWriter(fileName);
+            writer.write("Hello world\nLearning is so cool!");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Something happened while writing to the file");
+            e.printStackTrace();
+        }
+        
+        return;
+
+    }
+    
+    public static void writeWordFrequency(HashMap<String, Integer> charFreq, String fileName){
+        try {
+            FileWriter writer = new FileWriter(fileName);
+            writer.write("Hello world\nLearning is so cool!");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Something happened while writing to the file");
+            e.printStackTrace();
+        }
+        
+        return;
+
+    }
+    
 }
