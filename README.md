@@ -6,7 +6,7 @@
 
 **Resources** - Boardman 138, w3schools.com, Vj, GeeksForGeeks
 
-**Introspection** - Coding wasnt too hard. Ran into issues at first with the code writing a file with capital letters and punctuation marks. Also revised the code quite a bit because at first i was adding arguments named "content" instead of "fileName". writeCharacterFrequency and writeWordFrequency were the toughest parts of this assignment. countWordFrequency was also a doozy, but made it easier if i replaced everything to lowercase, and removed punctuation marks so it only count the words. Overall 6.75 hours (according to wakatime) into the assignment with retyping/recommenting/and prettyfying the code.
+**Introspection** - Coding wasnt too hard. Ran into issues at first with the code writing a file with capital letters and punctuation marks. Also revised the code quite a bit because at first i was adding arguments named "content" instead of "fileName". writeCharacterFrequency and writeWordFrequency were the toughest parts of this assignment. countWordFrequency was also a doozy, but made it easier if i replaced everything to lowercase, and removed punctuation marks so it only count the words. Writing to file was a challenge. Overall 6.75 hours (according to wakatime) into the assignment with retyping/recommenting/and prettyfying the code.
 
 ## _DO NOT EDIT BELOW THIS LINE_
 
