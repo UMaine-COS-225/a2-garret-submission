@@ -1,12 +1,6 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NUlwhsv2)
+# A2 Garret's Submission
 
-# A2-TextAnalyzer
-
-**Name** - Garrett Rumery
-
-**Resources** - Boardman 138, w3schools.com, Vj, GeeksForGeeks
-
-**Introspection** - Coding wasnt too hard. Ran into issues at first with the code writing a file with capital letters and punctuation marks. Also revised the code quite a bit because at first i was adding arguments named "content" instead of "fileName". writeCharacterFrequency and writeWordFrequency were the toughest parts of this assignment. countWordFrequency was also a doozy, but made it easier if i replaced everything to lowercase, and removed punctuation marks so it only count the words. Writing to file was a challenge. Overall 6.75 hours (according to wakatime) into the assignment with retyping/recommenting/and prettyfying the code.
+Look at Garret's submission. Review the commit history and the messages. 
 
 ## _DO NOT EDIT BELOW THIS LINE_
 
